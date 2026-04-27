@@ -1,0 +1,8 @@
+{
+  "name": "MockInterview.ai",
+  "description": "A world-class AI-powered mock interview platform featuring real-time voice and visual analysis, personalized feedback, and performance analytics.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
