@@ -19,7 +19,7 @@ interface OnboardingScreenProps {
 
 const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ user, onNavigate }) => {
   const [messages, setMessages] = useState<{ sender: 'ai' | 'user'; text: string }[]>([
-    { sender: 'ai', text: `Hi ${user?.name}! I'm Sarah, your AI interview coach. To get started, what role are you preparing for and in what language would you like to conduct the interview?` }
+    { sender: 'ai', text: `Hi ${user?.firstName}! I'm Sarah, your AI interview coach. To get started, what role are you preparing for and in what language would you like to conduct the interview?` }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -72,8 +72,8 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ user, onNavigate })
       });
       
       const configData = JSON.parse(result.text || '{}');
-      const isElite = user?.plan === 'elite';
-      const isPro = user?.plan === 'pro';
+      const isElite = user?.plan === 'ELITE';
+      const isPro = user?.plan === 'PRO';
       
       let finalDuration = configData.duration || 15;
       if (isElite) finalDuration = Math.min(60, finalDuration);
@@ -103,7 +103,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ user, onNavigate })
         experienceLevel: 'Senior',
         techStack: ['General Skills'],
         focusAreas: ['Core Competencies'],
-        duration: user?.plan === 'elite' ? 60 : user?.plan === 'pro' ? 45 : 10,
+        duration: user?.plan === 'ELITE' ? 60 : user?.plan === 'PRO' ? 45 : 10,
         language: 'English',
         customQuestions: ''
       };
@@ -136,9 +136,9 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ user, onNavigate })
         model: 'gemini-3-flash-preview',
         contents: contents,
         config: {
-          systemInstruction: `You are Sarah, a helpful AI Interview Coach. Help ${user?.name} set up an interview.
+          systemInstruction: `You are Sarah, a helpful AI Interview Coach. Help ${user?.firstName} set up an interview.
           COLLECT: 1. Role, 2. Experience Level, 3. Skills/Focus, 4. Duration, 5. Language.
-          PLAN LIMITS: ${user?.plan === 'elite' ? '60' : user?.plan === 'pro' ? '45' : '10'} minutes max.
+          PLAN LIMITS: ${user?.plan === 'ELITE' ? '60' : user?.plan === 'PRO' ? '45' : '10'} minutes max.
           IMPORTANT: Respond in the language the user is using if they switch to Spanish, French, etc., or confirm their chosen language.
           Once all details are known, end with "Ready to start?" to trigger the button.`
         }

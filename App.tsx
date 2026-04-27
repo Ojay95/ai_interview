@@ -81,8 +81,7 @@ const AppContent: React.FC = () => {
       <Routes>
         <Route path={ROUTES.LANDING} element={<LandingScreen onNavigate={handleNavigate} />} />
         <Route path={ROUTES.SIGN_IN} element={<SignInScreen onNavigate={handleNavigate} />} />
-        <Route path={ROUTES.SIGN_UP} element={<SignUpScreen onNavigate={handleNavigate} onLogin={() => {}} />} />
-        <Route path={ROUTES.PRIVACY} element={<PrivacyScreen onNavigate={handleNavigate} />} />
+        <Route path={ROUTES.SIGN_UP} element={<SignUpScreen onNavigate={handleNavigate} />} />        <Route path={ROUTES.PRIVACY} element={<PrivacyScreen onNavigate={handleNavigate} />} />
         <Route path={ROUTES.TERMS} element={<TermsScreen onNavigate={handleNavigate} />} />
         <Route path={ROUTES.CONTACT} element={<ContactScreen onNavigate={handleNavigate} />} />
 

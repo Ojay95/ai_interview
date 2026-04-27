@@ -64,8 +64,7 @@ const CVAnalysisScreen: React.FC<CVAnalysisScreenProps> = ({ user, onNavigate })
     
     setIsAnalyzing(true);
     try {
-      const result = await analyzeResumeMatch(resumeText, jd);
-      setAnalysisResult(result);
+        const result = await analyzeResumeMatch(resumeText);      setAnalysisResult(result);
     } catch (err) {
       console.error("Analysis failed:", err);
     } finally {

@@ -104,7 +104,7 @@ export function cleanJsonString(str: string): string {
  * Analyzes a CV file against AI benchmarks.
  * Calls CVController.java @PostMapping("/analyze")
  */
-export const analyzeResumeMatch = async (resumeFile: File): Promise<ResumeMatchResult> => {
+export const analyzeResumeMatch = async (resumeFile: string): Promise<ResumeMatchResult> => {
   const formData = new FormData();
   formData.append('file', resumeFile);
 

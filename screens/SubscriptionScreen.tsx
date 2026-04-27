@@ -45,7 +45,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> = ({ user, onNavigat
   const [isProcessing, setIsProcessing] = useState<string | null>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
 
-  const handleUpgrade = (plan: 'pro' | 'elite') => {
+  const handleUpgrade = (plan: 'PRO' | 'ELITE') => {
     if (!user) return;
     setIsProcessing(plan);
     setTimeout(() => {
@@ -108,10 +108,10 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> = ({ user, onNavigat
               </ul>
             </div>
             <button 
-              disabled={user?.plan === 'free'}
+              disabled={user?.plan === 'FREE'}
               className="w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest transition-all disabled:opacity-50"
             >
-              {user?.plan === 'free' ? 'Current Tier' : 'Default'}
+              {user?.plan === 'FREE' ? 'Current Tier' : 'Default'}
             </button>
           </div>
 
@@ -148,12 +148,12 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> = ({ user, onNavigat
               </ul>
             </div>
             <button 
-              onClick={() => handleUpgrade('pro')}
-              disabled={user?.plan === 'pro' || user?.plan === 'elite' || !!isProcessing}
+              onClick={() => handleUpgrade('PRO')}
+              disabled={user?.plan === 'PRO' || user?.plan === 'ELITE' || !!isProcessing}
               className="w-full py-5 rounded-2xl bg-primary hover:bg-primary-hover text-white font-black text-xs uppercase tracking-widest shadow-xl shadow-primary/30 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
             >
               {isProcessing === 'pro' ? <Loader2 className="size-4 animate-spin" /> : null}
-              {user?.plan === 'pro' ? 'Current Tier' : isProcessing === 'pro' ? 'Processing...' : 'Upgrade Now'}
+              {user?.plan === 'PRO' ? 'Current Tier' : isProcessing === 'pro' ? 'Processing...' : 'Upgrade Now'}
             </button>
           </div>
 
@@ -191,12 +191,12 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> = ({ user, onNavigat
               </ul>
             </div>
             <button 
-              onClick={() => handleUpgrade('elite')}
-              disabled={user?.plan === 'elite' || !!isProcessing}
+              onClick={() => handleUpgrade('ELITE')}
+              disabled={user?.plan === 'ELITE' || !!isProcessing}
               className="w-full py-5 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase tracking-widest shadow-xl shadow-purple-600/30 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
             >
-              {isProcessing === 'elite' ? <Loader2 className="size-4 animate-spin" /> : null}
-              {user?.plan === 'elite' ? 'Current Tier' : isProcessing === 'elite' ? 'Processing...' : 'Go Elite'}
+              {isProcessing === 'ELITE' ? <Loader2 className="size-4 animate-spin" /> : null}
+              {user?.plan === 'ELITE' ? 'Current Tier' : isProcessing === 'ELITE' ? 'Processing...' : 'Go ELITE'}
             </button>
           </div>
         </div>

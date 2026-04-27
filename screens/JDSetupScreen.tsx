@@ -40,8 +40,8 @@ const JDSetupScreen: React.FC<JDSetupScreenProps> = ({ user, onNavigate }) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [experienceLevel, setExperienceLevel] = useState('Senior');
   
-  const isPro = user?.plan === 'pro';
-  const isElite = user?.plan === 'elite';
+  const isPro = user?.plan === 'PRO';
+  const isElite = user?.plan === 'ELITE';
   const isProOrElite = isPro || isElite;
   
   const maxDuration = isElite ? 60 : isPro ? 45 : 10;
@@ -53,11 +53,13 @@ const JDSetupScreen: React.FC<JDSetupScreenProps> = ({ user, onNavigate }) => {
     
     try {
       const analysis = await analyzeJobDescription(context);
-      
-      // Fix: Use a type guard to check if analysis returned an error object before accessing properties.
-      if ('error' in analysis) {
-        throw new Error(analysis.error);
-      }
+
+        // Replace your current check with this:
+        if (analysis && typeof analysis === 'object' && 'error' in analysis) {
+            // Cast to the expected shape to satisfy the compiler
+            const errorObj = analysis as { error: string };
+            throw new Error(errorObj.error);
+        }
 
       const config: InterviewConfig = {
         role: analysis.roleName || context.split('\n')[0].slice(0, 50) || 'Professional Candidate',

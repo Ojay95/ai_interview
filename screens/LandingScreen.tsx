@@ -24,13 +24,19 @@ interface LandingScreenProps {
 }
 
 const LandingScreen: React.FC<LandingScreenProps> = ({ onNavigate }) => {
-  const { bypassAuth } = useAuthStore();
-
+  const { isLoading } = useAuthStore();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  const { user } = useAuthStore();
+
   const handleQuickPractice = () => {
-    bypassAuth();
-    onNavigate(Screen.Dashboard);
+    if (user) {
+      // If logged in, go straight to dashboard
+      onNavigate(Screen.Dashboard);
+    } else {
+      // If not logged in, they must authenticate first
+      onNavigate(Screen.SignIn);
+    }
   };
 
   return (

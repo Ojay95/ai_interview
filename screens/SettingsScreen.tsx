@@ -25,7 +25,7 @@ interface SettingsScreenProps {
 
 const SettingsScreen: React.FC<SettingsScreenProps> = ({ user, onNavigate, onLogout }) => {
   const [activeTab, setActiveTab] = useState('Voice & AI');
-  const isPro = user?.plan === 'pro' || user?.plan === 'elite';
+  const isPro = user?.plan === 'PRO' || user?.plan === 'ELITE';
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full bg-background-dark overflow-hidden font-display">
@@ -34,10 +34,10 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({ user, onNavigate, onLog
         <div className="flex flex-col gap-6 p-6">
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => onNavigate(Screen.Dashboard)}>
             <div className="size-10 lg:size-12 rounded-full border-2 border-border-dark bg-gray-600 flex items-center justify-center text-white text-xs font-bold uppercase shrink-0">
-              {user?.name?.slice(0, 2)}
+              {user?.firstName?.slice(0, 2)}
             </div>
             <div className="flex flex-col min-w-0">
-              <h1 className="text-white text-sm lg:text-base font-semibold leading-tight truncate">{user?.name}</h1>
+              <h1 className="text-white text-sm lg:text-base font-semibold leading-tight truncate">{user?.firstName}</h1>
               <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[8px] lg:text-[10px] font-black tracking-widest border mt-1 w-fit uppercase ${isPro ? 'bg-primary/20 text-primary border-primary/20' : 'bg-white/5 text-text-secondary border-white/10'}`}>
                 {user?.plan || 'Free'} Plan
               </span>
