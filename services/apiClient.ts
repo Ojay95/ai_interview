@@ -8,7 +8,7 @@ export const apiClient = axios.create({
     headers: {
         'Content-Type': 'application/json',
     },
-    // Increased timeout to 30s to allow Render free tier instances to spin up
+    // Increased timeout to 30s to allow Regit add README.mdnder free tier instances to spin up
     timeout: 30000,
 });
 
