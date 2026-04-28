@@ -20,29 +20,27 @@ export const useAuthStore = create<AuthState>()(
             token: null,
             isLoading: false,
 
+            // services/useAuthStore.ts
+
             login: async (email, password) => {
                 set({ isLoading: true });
                 try {
-                    // 1. Authenticate with backend
                     const response = await apiClient.post('/auth/login', { email, password });
+                    const { token, user: userSummary } = response.data; // Backend returns 'token' and 'user' object
 
-                    // Your backend AuthResponse returns 'access_token'
-                    const { access_token } = response.data;
+                    localStorage.setItem('access_token', token);
 
-                    // Store token immediately so subsequent interceptor calls work
-                    localStorage.setItem('access_token', access_token);
-
-                    // 2. Fetch actual user data from the protected profile endpoint
-                    const profileResponse = await apiClient.get('/users/me');
+                    // FIX: Change '/users/me' to '/users/profile' to match your UserController.java
+                    const profileResponse = await apiClient.get('/users/profile');
                     const user = profileResponse.data;
 
-                    set({ user, token: access_token, isLoading: false });
-                    toast.success(`Welcome back, ${user.firstName || 'User'}!`);
+                    set({ user, token, isLoading: false });
+                    toast.success(`Welcome back, ${user.firstName}!`);
                 } catch (error: any) {
                     set({ isLoading: false });
-                    const message = error.response?.data?.message || 'Invalid credentials';
+                    // Handle the error specifically
+                    const message = error.response?.status === 401 ? "Invalid email or password" : "Server error";
                     toast.error(message);
-                    throw error;
                 }
             },
 

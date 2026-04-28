@@ -1,8 +1,8 @@
 
 export enum Screen {
   Landing = 'landing',
-  SignIn = 'signin',
-  SignUp = 'signup',
+  Login = 'login',
+  Register = 'register',
   ForgotPassword = 'forgot-password',
   Onboarding = 'onboarding',
   JDSetup = 'jd-setup',

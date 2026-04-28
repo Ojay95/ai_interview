@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { apiClient } from '../services/apiClient';
 import toast from 'react-hot-toast';
 
-interface SignUpScreenProps {
+interface RegisterScreenProps {
   onNavigate: (screen: Screen) => void;
 }
 
-const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
+const Register: React.FC<RegisterScreenProps> = ({ onNavigate }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -34,8 +34,8 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
         password
       });
 
-      toast.success('Account created! Please sign in.');
-      onNavigate(Screen.SignIn);
+      toast.success('Account created! Please login.');
+      onNavigate(Screen.Login);
     } catch (error: any) {
       const message = error.response?.data?.message || 'Registration failed';
       toast.error(message);
@@ -179,4 +179,4 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ onNavigate }) => {
   );
 };
 
-export default SignUpScreen;
+export default Register;

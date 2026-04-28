@@ -13,8 +13,8 @@ export const GEMINI_MODELS = {
 
 export const ROUTES = {
   LANDING: '/',
-  SIGN_IN: '/signin',
-  SIGN_UP: '/signup',
+  LOGIN: '/login',
+  REGISTER: '/register',
   DASHBOARD: '/dashboard',
   ONBOARDING: '/onboarding',
   JD_SETUP: '/jd-setup',

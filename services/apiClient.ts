@@ -30,7 +30,7 @@ apiClient.interceptors.response.use(
         if (error.response?.status === 401) {
             // Clear token and redirect on authentication failure
             localStorage.removeItem('access_token');
-            window.location.href = '/signin';
+            window.location.href = '/login';
         }
         return Promise.reject(error);
     }
