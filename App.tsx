@@ -27,7 +27,7 @@ import ContactScreen from './screens/ContactScreen.tsx';
 
 const ProtectedRoute = ({ children }: React.PropsWithChildren) => {
   const { user } = useAuthStore();
-  if (!user) return <Navigate to={ROUTES.SIGN_IN} replace />;
+  if (!user) return <Navigate to={ROUTES.LOGIN} replace />;
   return <>{children}</>;
 };
 
@@ -38,8 +38,8 @@ const AppContent: React.FC = () => {
   const handleNavigate = (target: Screen) => {
     const routeMap: Record<Screen, string> = {
       [Screen.Landing]: ROUTES.LANDING,
-      [Screen.SignIn]: ROUTES.SIGN_IN,
-      [Screen.SignUp]: ROUTES.SIGN_UP,
+      [Screen.Login]: ROUTES.LOGIN,
+      [Screen.Register]: ROUTES.REGISTER,
       [Screen.Dashboard]: ROUTES.DASHBOARD,
       [Screen.Onboarding]: ROUTES.ONBOARDING,
       [Screen.JDSetup]: ROUTES.JD_SETUP,
@@ -54,7 +54,7 @@ const AppContent: React.FC = () => {
       [Screen.Privacy]: ROUTES.PRIVACY,
       [Screen.Terms]: ROUTES.TERMS,
       [Screen.Contact]: ROUTES.CONTACT,
-      [Screen.ForgotPassword]: ROUTES.SIGN_IN,
+      [Screen.ForgotPassword]: ROUTES.LOGIN,
     };
     const path = routeMap[target] || ROUTES.LANDING;
     navigate(path);
@@ -80,8 +80,8 @@ const AppContent: React.FC = () => {
       />
       <Routes>
         <Route path={ROUTES.LANDING} element={<LandingScreen onNavigate={handleNavigate} />} />
-        <Route path={ROUTES.SIGN_IN} element={<Login onNavigate={handleNavigate} />} />
-        <Route path={ROUTES.SIGN_UP} element={<Register onNavigate={handleNavigate} />} />        <Route path={ROUTES.PRIVACY} element={<PrivacyScreen onNavigate={handleNavigate} />} />
+        <Route path={ROUTES.LOGIN} element={<Login onNavigate={handleNavigate} />} />
+        <Route path={ROUTES.REGISTER} element={<Register onNavigate={handleNavigate} />} />        <Route path={ROUTES.PRIVACY} element={<PrivacyScreen onNavigate={handleNavigate} />} />
         <Route path={ROUTES.TERMS} element={<TermsScreen onNavigate={handleNavigate} />} />
         <Route path={ROUTES.CONTACT} element={<ContactScreen onNavigate={handleNavigate} />} />
 

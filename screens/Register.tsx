@@ -156,7 +156,7 @@ const Register: React.FC<RegisterScreenProps> = ({ onNavigate }) => {
 
             <div className="mt-8 text-center text-sm text-slate-600 dark:text-text-secondary">
               Already have an account?
-              <button onClick={() => onNavigate(Screen.SignIn)} className="ml-1 font-medium text-primary hover:underline transition-colors">Log in</button>
+              <button onClick={() => onNavigate(Screen.Login)} className="ml-1 font-medium text-primary hover:underline transition-colors">Log in</button>
             </div>
           </div>
         </div>

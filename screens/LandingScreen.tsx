@@ -35,7 +35,7 @@ const LandingScreen: React.FC<LandingScreenProps> = ({ onNavigate }) => {
       onNavigate(Screen.Dashboard);
     } else {
       // If not logged in, they must authenticate first
-      onNavigate(Screen.SignIn);
+      onNavigate(Screen.Login);
     }
   };
 
@@ -59,13 +59,13 @@ const LandingScreen: React.FC<LandingScreenProps> = ({ onNavigate }) => {
             <ThemeToggle />
           </div>
           <button 
-            onClick={() => onNavigate(Screen.SignIn)}
+            onClick={() => onNavigate(Screen.Login)}
             className="hidden sm:block text-sm font-semibold text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white transition-colors"
           >
             Sign In
           </button>
           <button 
-            onClick={() => onNavigate(Screen.SignUp)}
+            onClick={() => onNavigate(Screen.Register)}
             className="bg-primary hover:bg-primary-hover px-4 lg:px-6 py-2 rounded-xl text-xs lg:text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all"
           >
             Get Started
@@ -90,7 +90,7 @@ const LandingScreen: React.FC<LandingScreenProps> = ({ onNavigate }) => {
               <ThemeToggle />
             </div>
             <button 
-              onClick={() => onNavigate(Screen.SignIn)}
+              onClick={() => onNavigate(Screen.Login)}
               className="w-full py-4 rounded-2xl border border-black/5 dark:border-white/10 text-slate-900 dark:text-white font-bold"
             >
               Sign In
